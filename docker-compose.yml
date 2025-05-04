@@ -1,0 +1,10 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: fc-sistemas-monoliticos
+    volumes:
+      - .:/app
+    tty: true
