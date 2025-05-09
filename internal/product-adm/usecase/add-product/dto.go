@@ -13,7 +13,12 @@ type AddProductInputDTO struct {
 }
 
 func (a *AddProductInputDTO) toDomainEntity() entity.Product {
-	return entity.NewProduct("1", a.Name, a.Description, a.PurchasePrice, a.Stock)
+	return entity.Product{
+		Name:          a.Name,
+		Description:   a.Description,
+		PurchasePrice: a.PurchasePrice,
+		Stock:         a.Stock,
+	}
 }
 
 type AddProductOutputDTO struct {
@@ -28,10 +33,10 @@ type AddProductOutputDTO struct {
 
 func (a *AddProductOutputDTO) fromDomainEntity(product entity.Product) {
 	a.ID = product.ID
-	a.Name = product.GetName()
-	a.Description = product.GetDescription()
-	a.PurchasePrice = product.GetPurchasePrice()
-	a.Stock = product.GetStock()
-	a.CreatedAt = product.GetCreatedAt()
-	a.UpdatedAt = product.GetUpdatedAt()
+	a.Name = product.Name
+	a.Description = product.Description
+	a.PurchasePrice = product.PurchasePrice
+	a.Stock = product.Stock
+	a.CreatedAt = product.CreatedAt
+	a.UpdatedAt = product.UpdatedAt
 }

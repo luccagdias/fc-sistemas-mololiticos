@@ -36,7 +36,7 @@ func TestAddProductUseCase_Execute(t *testing.T) {
 				CreatedAt:     time.Now(),
 				UpdatedAt:     time.Now(),
 			},
-			repositoryResponse: entity.NewProduct("1", "Product Name", "Product Description", 100, 10),
+			repositoryResponse: entity.Product{ID: "1", Name: "Product Name", Description: "Product Description", PurchasePrice: 100, Stock: 10},
 			expectError:        false,
 		},
 		{
