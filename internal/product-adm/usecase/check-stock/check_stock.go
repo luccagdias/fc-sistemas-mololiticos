@@ -6,10 +6,10 @@ import (
 )
 
 type CheckStockUseCase struct {
-	productRepository port.ProductRepository
+	productRepository port.Repository
 }
 
-func NewCheckStockUseCase(repository port.ProductRepository) usecase.UseCase[CheckStockInputDTO, CheckStockOutputDTO] {
+func NewCheckStockUseCase(repository port.Repository) usecase.UseCase[CheckStockInputDTO, CheckStockOutputDTO] {
 	return CheckStockUseCase{productRepository: repository}
 }
 

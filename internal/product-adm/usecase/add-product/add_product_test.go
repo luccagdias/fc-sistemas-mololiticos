@@ -3,7 +3,7 @@ package add_product
 import (
 	"errors"
 	"github.com/fc-sistemas-monoliticos/internal/product-adm/domain/entity"
-	"github.com/fc-sistemas-monoliticos/mocks"
+	"github.com/fc-sistemas-monoliticos/mocks/product-adm"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
 	"testing"
@@ -48,7 +48,7 @@ func TestAddProductUseCase_Execute(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.description, func(t *testing.T) {
 			ctrl := gomock.NewController(t)
-			productRepository := mocks.NewMockProductRepository(ctrl)
+			productRepository := mocks.NewMockRepository(ctrl)
 			productRepository.EXPECT().Add(gomock.Any()).Return(test.repositoryResponse, test.repositoryError).Times(1)
 			usecase := NewAddProductUseCase(productRepository)
 

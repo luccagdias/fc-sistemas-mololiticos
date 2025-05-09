@@ -3,7 +3,7 @@ package check_stock
 import (
 	"errors"
 	"github.com/fc-sistemas-monoliticos/internal/product-adm/domain/entity"
-	"github.com/fc-sistemas-monoliticos/mocks"
+	"github.com/fc-sistemas-monoliticos/mocks/product-adm"
 	"github.com/stretchr/testify/assert"
 	"go.uber.org/mock/gomock"
 	"testing"
@@ -38,7 +38,7 @@ func TestCheckStockUseCase_Execute(t *testing.T) {
 	}
 	for _, test := range tests {
 		t.Run(test.description, func(t *testing.T) {
-			repository := mocks.NewMockProductRepository(gomock.NewController(t))
+			repository := mocks.NewMockRepository(gomock.NewController(t))
 			repository.EXPECT().Find(test.input.ID).Return(test.repositoryResponse, test.repositoryError).Times(1)
 			usecase := NewCheckStockUseCase(repository)
 

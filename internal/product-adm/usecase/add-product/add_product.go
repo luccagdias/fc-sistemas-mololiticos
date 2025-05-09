@@ -6,10 +6,10 @@ import (
 )
 
 type AddProductUseCase struct {
-	productRepository port.ProductRepository
+	productRepository port.Repository
 }
 
-func NewAddProductUseCase(repository port.ProductRepository) usecase.UseCase[AddProductInputDTO, AddProductOutputDTO] {
+func NewAddProductUseCase(repository port.Repository) usecase.UseCase[AddProductInputDTO, AddProductOutputDTO] {
 	return AddProductUseCase{productRepository: repository}
 }
 
