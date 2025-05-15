@@ -1,3 +1,4 @@
+import Address from "../../../@shared/domain/value-object/address";
 import ID from "../../../@shared/domain/value-object/id.value-object";
 import Client from "../../domain/client.entity";
 import ClientGateway from "../../gateway/client.gateway";
@@ -11,7 +12,15 @@ export default class AddClientUseCase {
             id: new ID(input.id) || new ID(),
             name: input.name,
             email: input.email,
-            address: input.address,
+            document: input.document,
+            address: new Address(
+                input.address.street,
+                input.address.number,
+                input.address.complement,
+                input.address.city,
+                input.address.state,
+                input.address.zipCode,
+            )
         });
 
         await this.clientRepository.add(client);
@@ -20,7 +29,15 @@ export default class AddClientUseCase {
             id: client.id.id,
             name: client.name,
             email: client.email,
-            address: client.address,
+            document: client.document,
+            address: new Address(
+                client.address.street,
+                client.address.number,
+                client.address.complement,
+                client.address.city,
+                client.address.state,
+                client.address.zipCode,
+            ),
             createdAt: client.createdAt,
             updatedAt: client.updatedAt,
         };
